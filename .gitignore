@@ -1,0 +1,9 @@
+
+/L.PX/obj
+/L.PX/bin
+/L.PX.Core/obj
+/L.PX.Core/bin
+/L.PX.Tests/obj
+/L.PX.Tests/bin
+/TestResults
+*.suo
