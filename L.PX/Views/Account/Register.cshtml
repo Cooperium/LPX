@@ -22,19 +22,35 @@
             <legend>Account Information</legend>
 
             <div class="editor-label">
-                @Html.LabelFor(m => m.UserName)
-            </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
-            </div>
-
-            <div class="editor-label">
                 @Html.LabelFor(m => m.Email)
             </div>
             <div class="editor-field">
                 @Html.TextBoxFor(m => m.Email)
                 @Html.ValidationMessageFor(m => m.Email)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.NomeCompleto)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.NomeCompleto)
+                @Html.ValidationMessageFor(m => m.NomeCompleto)
+            </div>
+                        
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Empresa)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.Empresa)
+                @Html.ValidationMessageFor(m => m.Empresa)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Telefone)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.Telefone)
+                @Html.ValidationMessageFor(m => m.Telefone)
             </div>
 
             <div class="editor-label">

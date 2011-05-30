@@ -30,8 +30,8 @@ namespace L.PX.Models
     public class LogOnModel
     {
         [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
+        [Display(Name = "Email")]
+        public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -45,13 +45,23 @@ namespace L.PX.Models
     public class RegisterModel
     {
         [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
+        [DataType(DataType.Text)]
+        [Display(Name = "Nome Completo")]
+        public string NomeCompleto { get; set; } //retira
 
         [Required]
-        [DataType(DataType.EmailAddress)]
         [Display(Name = "Email address")]
-        public string Email { get; set; }
+        public string Email { get; set; } // + telefone + empresa
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Telefone")]
+        public string Telefone { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Empresa")]
+        public string Empresa { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
