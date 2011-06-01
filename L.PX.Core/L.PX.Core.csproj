@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cronometro.cs" />
     <Compile Include="Data\LpxDao.cs" />
     <Compile Include="Leilao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

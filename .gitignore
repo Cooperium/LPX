@@ -7,3 +7,7 @@
 /L.PX.Tests/bin
 /TestResults
 *.suo
+/L.PX/App_Data/ASPNETDB.MDF
+/L.PX/App_Data/aspnetdb_log.ldf
+/L.PX/App_Data/ASPNETDB.MDF
+/L.PX/App_Data/aspnetdb_log.ldf

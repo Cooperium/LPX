@@ -11,12 +11,12 @@ namespace L.PX.Tests
     public class TestLeilaoCore
     {
         private Leilao leilao = null;
-        
+
         [TestInitialize]
         public void SetupTest1()
         {
-  
-        
+
+
         }
 
         [TestMethod]
@@ -24,17 +24,13 @@ namespace L.PX.Tests
         {
             var leilao = new Leilao();
 
-            var user1 = new User() { Email = "asd@12312.123123"};
+            var user1 = new User() { Email = "asd@12312.123123" };
 
             leilao.AddContratante(user1);
 
             Assert.IsTrue(leilao.FindParticipante(user1).papel == Leilao.Papel.Contratante);
 
         }
-
-               [TestCleanup]
-        public void SetupTest1()
-        {
 
         
     }
