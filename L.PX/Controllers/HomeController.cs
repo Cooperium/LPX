@@ -12,7 +12,7 @@ namespace L.PX.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC! " + User.Identity.Name;
+            ViewBag.Message = "L.PX " + User.Identity.Name;
 
             var dao = new LpxDao();
             var membershipUser = Membership.GetUser(User.Identity.Name);
