@@ -39,6 +39,11 @@ namespace L.PX.Core
 
             lancesProcessados.Add(lanceProcessado);
             OrdenarLances();
+            return FindLance(lance);
+        }
+
+        public LanceProcessado FindLance(Lance lance)
+        {
             return lancesProcessados.Single(lp => lp.Lance == lance);
         }
 
@@ -48,23 +53,23 @@ namespace L.PX.Core
             lancesProcessados.ForEach(l => l.Status = LanceStatus.NaoAtendido);
             
             var query = from l in lancesProcessados group l by l.Lance.User into g select new { Usuario = g.Key, MaiorLance = g.Single(l => l.Valor == g.Max(lp => lp.Valor)) };
-            Int32 lotesToGo = NumeroDeLotes;
+            Int32 lotesDisponiveis = NumeroDeLotes;
 
             foreach (var item in query)
             {
-                if (lotesToGo > 0)
+                if (lotesDisponiveis > 0)
                 {
-                    if (item.MaiorLance.Lance.NumeroDeLotes <= lotesToGo)
+                    if (item.MaiorLance.Lance.NumeroDeLotes <= lotesDisponiveis)
                     {
                         item.MaiorLance.NumeroLotesAtendidos = item.MaiorLance.Lance.NumeroDeLotes;
                         item.MaiorLance.Status = LanceStatus.Atendido;
-                        lotesToGo -= item.MaiorLance.NumeroLotesAtendidos;
+                        lotesDisponiveis -= item.MaiorLance.NumeroLotesAtendidos;
                     }
                     else
                     {
-                        item.MaiorLance.NumeroLotesAtendidos = lotesToGo;
+                        item.MaiorLance.NumeroLotesAtendidos = lotesDisponiveis;
                         item.MaiorLance.Status = LanceStatus.ParcialmenteAtendido;
-                        lotesToGo = 0;
+                        lotesDisponiveis = 0;
                     }
                 }
                 else
@@ -73,9 +78,6 @@ namespace L.PX.Core
                     item.MaiorLance.Status = LanceStatus.NaoAtendido;
                 }
 
-                if (NumeroDeLotes == 0)
-                    item.MaiorLance.NumeroLotesAtendidos = 0;
-                    item.MaiorLance.Status = LanceStatus.Rejeitado;
             }
         }
 

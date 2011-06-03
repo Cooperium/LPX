@@ -14,9 +14,7 @@ namespace L.PX.Core
         public String Empresa { get; set; }
         public String Telefone { get; set; }
 
-       // private List<Lance> lances = new List<Lance>();
-
-       
+ 
 
       
     }
