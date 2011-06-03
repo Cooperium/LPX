@@ -13,5 +13,11 @@ namespace L.PX.Core
         public String NomeCompleto { get; set; }
         public String Empresa { get; set; }
         public String Telefone { get; set; }
+
+       // private List<Lance> lances = new List<Lance>();
+
+       
+
+      
     }
 }
