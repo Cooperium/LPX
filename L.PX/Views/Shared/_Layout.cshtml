@@ -16,12 +16,10 @@
             <div id="logindisplay">
                 @Html.Partial("_LogOnPartial")
             </div>
-            <nav>
-                <ul id="navlist">
-                 <li class="first"><a href="/" id="current">Home</a></li>
-                 <li><a href="/Leilão/">Leilão</a></li> 
-                 </ul>
-            </nav>
+             <ul id="navlist">
+                <li class="first"><a href="@Url.Content("~")" id="current">Home</a></li>
+                <li><a href="@Url.Content("~/Leilao/")">Leilao</a></li>
+             </ul>        
         </header>
         <section id="main">
             @RenderBody()

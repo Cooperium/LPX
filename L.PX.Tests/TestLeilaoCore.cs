@@ -20,17 +20,19 @@ namespace L.PX.Tests
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestAdicaoUsuario()
         {
             var leilao = new Leilao();
 
-            var user1 = new User() { Email = "asd@12312.123123" };
+            var user1 = new User() { Email = "cristianoaffa@hotmail.com" };
 
             leilao.AddContratante(user1);
 
-            Assert.IsTrue(leilao.FindParticipante(user1).papel == Leilao.Papel.Contratante);
+            Assert.IsTrue(leilao.FindParticipante(user1).papel == Papel.Contratante);
 
         }
+
+     
 
         
     }

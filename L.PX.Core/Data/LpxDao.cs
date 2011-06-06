@@ -9,5 +9,7 @@ namespace L.PX.Core.Data
     public class LpxDao : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Leilao> Leiloes { get; set; }
     }
+
 }

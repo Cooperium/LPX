@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="CronometroTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TesteUsuarioCore.cs" />
     <Compile Include="TestLeilaoCore.cs" />
     <Compile Include="UserPersistence.cs" />
   </ItemGroup>
