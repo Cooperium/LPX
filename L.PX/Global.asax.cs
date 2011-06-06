@@ -36,6 +36,7 @@ namespace L.PX
         {
             Database.SetInitializer<LpxDao>(new SampleData());
 
+            new LpxDao().Leiloes.FirstOrDefault();
 
             AreaRegistration.RegisterAllAreas();
 

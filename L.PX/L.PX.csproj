@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -155,6 +156,12 @@
       <Project>{8D512D02-4024-41D8-AA90-825B6F7E8CF6}</Project>
       <Name>L.PX.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Leilão\TelaParticipante.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Leilão\TelaContratante.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

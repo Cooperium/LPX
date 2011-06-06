@@ -5,6 +5,7 @@ using System.Web;
 using L.PX.Core;
 using L.PX.Core.Data;
 using System.Data.Entity;
+using System.Web.Security;
 
 namespace L.PX.Models
 {
@@ -12,6 +13,17 @@ namespace L.PX.Models
     {
         protected override void Seed(LpxDao context)
         {
+
+            foreach (var user in Membership.GetAllUsers())
+            {
+                Membership.DeleteUser(((MembershipUser)user).UserName, true);
+            }
+
+
+            Membership.CreateUser("cooperium@cooperium.com", "123456", "cooperium@cooperium.com");
+            Membership.CreateUser("matheus@cooperium.com", "123456", "matheus@cooperium.com");
+            Membership.CreateUser("carlitos@cooperium.com", "123456", "carlitos@cooperium.com");
+
             var users = new List<User>
             {
                 new User {Email = "cooperium@cooperium.com", NomeCompleto = "Cooperium",  Empresa = "Cemig", Telefone = "34223242"},
@@ -27,6 +39,7 @@ namespace L.PX.Models
 
             users.ForEach(u => context.Users.Add(u));
             context.Leiloes.Add(leilao);
+           //context.SaveChanges();
         }
     }
 }

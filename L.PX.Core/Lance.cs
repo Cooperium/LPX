@@ -7,6 +7,7 @@ namespace L.PX.Core
 {
     public class Lance
     {
+        public Int32 Id { get; set; }
         public decimal Incremento { get; set; }
         public Int32 NumeroDeLotes { get; set; }
         public User User { get; set; }

@@ -7,6 +7,7 @@ namespace L.PX.Core
 {
     public class LanceProcessado
     {
+        public Int32 Id { get; set; }
         public LanceStatus Status { get; set; }
         public Int32 NumeroLotesAtendidos { get; set; }
         public Leilao Leilao { get; set; }

@@ -10,6 +10,7 @@ namespace L.PX.Core.Data
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Leilao> Leiloes { get; set; }
+        public DbSet<Participante> Participantes { get; set; }
     }
 
 }

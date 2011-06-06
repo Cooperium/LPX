@@ -10,9 +10,11 @@ namespace L.PX.Core
     {
         [Key]
         public Int32 Id { get; set; }
-        
         private decimal valorInicial = 0;
-
+        public virtual List<Participante> Participantes { get; set; }
+        public virtual List<LanceProcessado> LancesProcessados { get; set; }
+        public decimal ValorAtual { get; private set; }
+        public Int32 NumeroDeLotes { get; set; }
         public decimal ValorInicial
         {
             get
@@ -25,13 +27,12 @@ namespace L.PX.Core
                 ValorAtual = value;
             }
         }
-        public decimal ValorAtual { get; private set; }
-        public Int32 NumeroDeLotes { get; set; }
-
-
-        private List<Participante> participantes = new List<Participante>();
-        private List<LanceProcessado> lancesProcessados = new List<LanceProcessado>();
-
+        
+        public Leilao()
+        {
+            Participantes = new List<Participante>();
+            LancesProcessados = new List<LanceProcessado>();
+        }
 
         public LanceProcessado RecebeLance(Lance lance)
         {
@@ -43,17 +44,17 @@ namespace L.PX.Core
 
             LanceProcessado lanceProcessado = new LanceProcessado() { Lance = lance, Leilao = this, NumeroLotesAtendidos = 0, Status = LanceStatus.NaoAtendido, Valor = (ValorAtual + lance.Incremento) };
 
-            lancesProcessados.Add(lanceProcessado);
+            LancesProcessados.Add(lanceProcessado);
             OrdenarLances();
-            return lancesProcessados.Single(lp => lp.Lance == lance);
+            return LancesProcessados.Single(lp => lp.Lance == lance);
         }
 
 
         private void OrdenarLances()
         {
-            lancesProcessados.ForEach(l => l.Status = LanceStatus.NaoAtendido);
+            LancesProcessados.ForEach(l => l.Status = LanceStatus.NaoAtendido);
 
-            var query = from l in lancesProcessados group l by l.Lance.User into g select new { Usuario = g.Key, MaiorLance = g.Single(l => l.Valor == g.Max(lp => lp.Valor)) };
+            var query = from l in LancesProcessados group l by l.Lance.User into g select new { Usuario = g.Key, MaiorLance = g.Single(l => l.Valor == g.Max(lp => lp.Valor)) };
             Int32 lotesToGo = NumeroDeLotes;
 
             foreach (var item in query)
@@ -91,7 +92,8 @@ namespace L.PX.Core
                 throw new ArgumentNullException();
 
             var contratante = Participante.Build(user, Papel.Contratante);
-            participantes.Add(contratante);
+            contratante.Leilao = this;
+            Participantes.Add(contratante);
         }
 
         public void AddParticipante(User user)
@@ -100,23 +102,24 @@ namespace L.PX.Core
                 throw new ArgumentNullException();
 
             var participante = Participante.Build(user, Papel.Participante);
-            participantes.Add(participante);
+            participante.Leilao = this;
+            Participantes.Add(participante);
         }
 
         public Participante FindParticipante(User user)
         {
-            return participantes.SingleOrDefault(p => p.Usuario == user);
+            return Participantes.SingleOrDefault(p => p.Usuario == user);
         }
 
         public LanceProcessado FindLanceProcessado(Lance lance)
         {
-            return lancesProcessados.SingleOrDefault(l => l.Lance == lance);
+            return LancesProcessados.SingleOrDefault(l => l.Lance == lance);
         }
 
 
         public ICollection<LanceProcessado> ListaLancesDosUsuarios()
         {
-            return lancesProcessados;
+            return LancesProcessados;
 
         }
 
