@@ -12,18 +12,18 @@ namespace L.PX.Core
         public Int32 id { get; set; }
 
         public User Usuario { get; set; }
-        public Papel papel { get; set; }
+        public bool IsContratante { get; set; }
+
         public Leilao Leilao { get; set; }
 
         protected Participante() { }
 
-        public static Participante Build(User usuario, Papel papel)
+        public static Participante Build(User usuario)
         {
-            return new Participante() { papel = papel, Usuario = usuario };
+            return new Participante() { Usuario = usuario };
         }
 
     }
-
 
     public enum Papel
     {

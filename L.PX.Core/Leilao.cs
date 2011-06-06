@@ -91,7 +91,8 @@ namespace L.PX.Core
             if (user == null)
                 throw new ArgumentNullException();
 
-            var contratante = Participante.Build(user, Papel.Contratante);
+            var contratante = Participante.Build(user);
+            contratante.IsContratante = true;
             contratante.Leilao = this;
             Participantes.Add(contratante);
         }
@@ -101,7 +102,8 @@ namespace L.PX.Core
             if (user == null)
                 throw new ArgumentNullException();
 
-            var participante = Participante.Build(user, Papel.Participante);
+            var participante = Participante.Build(user);
+            participante.IsContratante = false;
             participante.Leilao = this;
             Participantes.Add(participante);
         }

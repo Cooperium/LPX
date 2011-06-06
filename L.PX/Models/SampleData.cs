@@ -9,7 +9,7 @@ using System.Web.Security;
 
 namespace L.PX.Models
 {
-    public class SampleData : DropCreateDatabaseIfModelChanges<LpxDao>
+    public class SampleData : DropCreateDatabaseAlways<LpxDao>
     {
         protected override void Seed(LpxDao context)
         {
@@ -39,7 +39,7 @@ namespace L.PX.Models
 
             users.ForEach(u => context.Users.Add(u));
             context.Leiloes.Add(leilao);
-           //context.SaveChanges();
+      
         }
     }
 }

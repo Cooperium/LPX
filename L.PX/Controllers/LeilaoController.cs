@@ -10,7 +10,7 @@ using System.Web.Security;
 
 namespace L.PX.Controllers
 {
-    public class LeilãoController : Controller
+    public class LeilaoController : Controller
     {
         LpxDao leilaoDB = new LpxDao();
 
@@ -28,12 +28,12 @@ namespace L.PX.Controllers
 
             var participante = leilao.FindParticipante(usuario);
 
-            if ((participante != null) && (participante.papel == Papel.Participante))
+            if ((participante != null) && (participante.IsContratante  == false))
                  {
                      return RedirectToAction("TelaParticipante");
                  }
             
-                if ((participante != null) && (participante.papel == Papel.Contratante))
+                if ((participante != null) && (participante.IsContratante  == true))
                 {
                     return RedirectToAction("TelaContratante");
                 }
