@@ -17,7 +17,7 @@ namespace L.PX.Controllers
         //
         // GET: /Account/LogOn
 
-        public ActionResult LogOn()
+        public ActionResult Entrar()
         {
             return View();
         }
@@ -26,7 +26,7 @@ namespace L.PX.Controllers
         // POST: /Account/LogOn
 
         [HttpPost]
-        public ActionResult LogOn(LogOnModel model, string returnUrl)
+        public ActionResult Entrar(LogOnModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace L.PX.Controllers
         //
         // GET: /Account/Register
 
-        public ActionResult Register()
+        public ActionResult Registrar()
         {
             return View();
         }
@@ -75,7 +75,7 @@ namespace L.PX.Controllers
         // POST: /Account/Register
 
         [HttpPost]
-        public ActionResult Register(RegisterModel model)
+        public ActionResult Registrar(RegisterModel model)
         {
             if (ModelState.IsValid)
             {

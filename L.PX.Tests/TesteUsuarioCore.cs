@@ -1,4 +1,4 @@
-Ôªøusing System;
+using System;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +16,12 @@ namespace L.PX.Tests
 
             User usuario1 = new User(){
                 Email = "cristianoaffa@hotmail.com",
-                NomeCompleto = "Cristiano Aff√° Ferreira" 
+                NomeCompleto = "Cristiano Aff· Ferreira" 
             };
 
             User usuario2 = new User(){
                 Email = "josesilva@hotmail.com",
-                NomeCompleto = "Jos√© da Silva"
+                NomeCompleto = "JosÈ da Silva"
             };
 
 
@@ -47,7 +47,7 @@ namespace L.PX.Tests
             //processando o primeiro lance:            
             LanceProcessado lp1 = leilao.RecebeLance(lance1);
             
-            //o lance √© atendido!
+            //o lance È atendido!
             Assert.IsTrue(lp1.Status == LanceStatus.Atendido);
 
             //processando o segundo lance:

@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Data.Entity;
+using L.PX.Core.Data;
+using L.PX.Models;
 
 namespace L.PX
 {
@@ -31,6 +34,10 @@ namespace L.PX
 
         protected void Application_Start()
         {
+            Database.SetInitializer<LpxDao>(new SampleData());
+
+            new LpxDao().Leiloes.FirstOrDefault();
+
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
