@@ -27,7 +27,7 @@ namespace L.PX.Core
                 ValorAtual = value;
             }
         }
-        
+
         public Leilao()
         {
             Participantes = new List<Participante>();
@@ -46,7 +46,10 @@ namespace L.PX.Core
 
             LancesProcessados.Add(lanceProcessado);
             OrdenarLances();
-            return LancesProcessados.Single(lp => lp.Lance == lance);
+            var lanceP = LancesProcessados.Single(lp => lp.Lance == lance);
+
+            ValorAtual = lanceP.Valor;
+            return lanceP;
         }
 
 
@@ -54,7 +57,7 @@ namespace L.PX.Core
         {
             LancesProcessados.ForEach(l => l.Status = LanceStatus.NaoAtendido);
 
-            var query = from l in LancesProcessados group l by l.Lance.User into g select new { Usuario = g.Key, MaiorLance = g.Single(l => l.Valor == g.Max(lp => lp.Valor)) };
+            var query = from l in LancesProcessados group l by l.Lance.User into g select new { Usuario = g.Key, MaiorLance = g.First(l => l.Valor == g.Max(lp => lp.Valor)) };
             Int32 lotesToGo = NumeroDeLotes;
 
             foreach (var item in query)

@@ -12,7 +12,7 @@ namespace L.PX.Core
         public Int32 NumeroDeLotes { get; set; }
         public User User { get; set; }
 
-        private Lance() { }
+        public Lance() { }
 
         public static Lance Build(Decimal incremento, int numeroDeLotes, User usuario)
         {

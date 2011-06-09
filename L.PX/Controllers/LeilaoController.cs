@@ -12,7 +12,8 @@ namespace L.PX.Controllers
 {
     public class LeilaoController : Controller
     {
-        LpxDao leilaoDB = new LpxDao();
+        static LpxDao leilaoDB = new LpxDao();
+        Leilao leilao = leilaoDB.Leiloes.First();
 
         //
         // GET: /Leilao/
@@ -22,38 +23,75 @@ namespace L.PX.Controllers
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Home");
 
-            var leilao = leilaoDB.Leiloes.First();
+
             var email = Membership.GetUser().Email;
             var usuario = leilaoDB.Users.Single(u => u.Email == email);
 
             var participante = leilao.FindParticipante(usuario);
 
-            if ((participante != null) && (participante.IsContratante  == false))
-                 {
-                     return RedirectToAction("TelaParticipante");
-                 }
-            
-                if ((participante != null) && (participante.IsContratante  == true))
-                {
-                    return RedirectToAction("TelaContratante");
-                }
+            if ((participante != null) && (participante.IsContratante == false))
+            {
+                return RedirectToAction("TelaParticipante");
+            }
 
+            if ((participante != null) && (participante.IsContratante == true))
+            {
+                participante.IsContratante(true);
+                return RedirectToAction("TelaContratante");
+            }
 
             return View();
         }
 
-        //Post: TelaParticipante/
+        //GET: TelaParticipante/
         public ActionResult TelaParticipante()
         {
-            return View();
+            var email = Membership.GetUser().Email;
+            var usuario = leilaoDB.Users.Single(u => u.Email == email);
+            var lance = Lance.Build(10, leilao.NumeroDeLotes, usuario);
 
+            ViewBag.Lances = leilao.ListaLancesDosUsuarios().Where(l => l.Lance.User == usuario);
+            return View(lance);
+        }
+
+        [HttpPost]
+        public ActionResult TelaParticipante(Lance lance)
+        {
+            TryUpdateModel(lance);
+
+            var email = Membership.GetUser().Email;
+            var usuario = leilaoDB.Users.Single(u => u.Email == email); // <== gambiarra
+            lance.User = usuario;
+            var lanceProcessado = leilao.RecebeLance(lance);
+
+            ViewBag.Lances = leilao.ListaLancesDosUsuarios().Where(l => l.Lance.User == usuario);
+            return View();
         }
 
         //Get: TelaContratante/
-           public ActionResult TelaContratante()
-          {
+        public ActionResult TelaContratante()
+        {
+            var email = Membership.GetUser().Email;
+            var usuario = leilaoDB.Users.Single(u => u.Email == email);
+            var lance = Lance.Build(10, leilao.NumeroDeLotes, usuario);
+
+            ViewBag.Lances = leilao.ListaLancesDosUsuarios().Where(l => l.Lance.User == usuario);
             return View();
-         }
+        }
+
+        [HttpPost]
+        public ActionResult TelaContratante(Lance lance)
+        {
+            TryUpdateModel(lance);
+
+            var email = Membership.GetUser().Email;
+            var usuario = leilaoDB.Users.Single(u => u.Email == email); // <== gambiarra
+            lance.User = usuario;
+            var lanceProcessado = leilao.RecebeLance(lance);
+
+            ViewBag.Lances = leilao.ListaLancesDosUsuarios().Where(l => l.Lance.User == usuario);
+            return View();
+        }
 
     }
 }
