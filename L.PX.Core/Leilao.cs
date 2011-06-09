@@ -57,7 +57,8 @@ namespace L.PX.Core
         {
             LancesProcessados.ForEach(l => l.Status = LanceStatus.NaoAtendido);
 
-            var query = from l in LancesProcessados group l by l.Lance.User into g select new { Usuario = g.Key, MaiorLance = g.First(l => l.Valor == g.Max(lp => lp.Valor)) };
+            var query = from l in LancesProcessados orderby l.Valor descending group l by l.Lance.User into g select new { Usuario = g.Key, MaiorLance = g.First(l => l.Valor == g.Max(lp => lp.Valor)) };
+
             Int32 lotesToGo = NumeroDeLotes;
 
             foreach (var item in query)
@@ -84,8 +85,9 @@ namespace L.PX.Core
                 }
 
                 if (NumeroDeLotes == 0)
+                {
                     item.MaiorLance.NumeroLotesAtendidos = 0;
-                item.MaiorLance.Status = LanceStatus.Rejeitado;
+                }
             }
         }
 
