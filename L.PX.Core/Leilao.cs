@@ -130,7 +130,12 @@ namespace L.PX.Core
 
         }
 
-
+        public ICollection<Participante> ListaParticipantes()
+        {
+            return Participantes;
+        
+        
+        }
 
 
 

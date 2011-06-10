@@ -70,12 +70,14 @@ namespace L.PX.Controllers
         //Get: TelaContratante/
         public ActionResult TelaContratante()
         {
+            ViewBag.Participantes = leilao.ListaParticipantes();
             return View(leilao);
         }
 
         [HttpPost]
         public ActionResult TelaContratante(Lance lance)
         {
+           // Membership.GetUser().IsOnline();
             return View();
         }
 

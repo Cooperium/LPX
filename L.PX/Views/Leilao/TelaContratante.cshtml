@@ -28,7 +28,16 @@
     @foreach (var item in Model.ListaLancesDosUsuarios())
     {
         <table>
-        <tr>@item.Valor.ToString();</tr>
+            <tr>@item.Valor.ToString() - @item.Lance.User.Email.ToString();</tr>
+        </table>
+    }
+</fieldset>
+<fieldset>
+    <legend>Participantes</legend>
+    @foreach (L.PX.Core.Participante item in ViewBag.Participantes)
+    {
+        <table>
+            <tr>@item.Usuario.Email.ToString()</tr>
         </table>
     }
 </fieldset>
