@@ -36,7 +36,6 @@ namespace L.PX.Controllers
 
             if ((participante != null) && (participante.IsContratante == true))
             {
-                participante.IsContratante(true);
                 return RedirectToAction("TelaContratante");
             }
 
@@ -71,12 +70,8 @@ namespace L.PX.Controllers
         //Get: TelaContratante/
         public ActionResult TelaContratante()
         {
-            var email = Membership.GetUser().Email;
-            var usuario = leilaoDB.Users.Single(u => u.Email == email);
-            var lance = Lance.Build(10, leilao.NumeroDeLotes, usuario);
 
-            ViewBag.Lances = leilao.ListaLancesDosUsuarios().Where(l => l.Lance.User == usuario);
-            return View();
+            return View(leilao);
         }
 
         [HttpPost]
