@@ -36,7 +36,7 @@ namespace L.PX.Controllers
 
             if ((participante != null) && (participante.IsContratante == true))
             {
-                participante.IsContratante(true);
+
                 return RedirectToAction("TelaContratante");
             }
 
