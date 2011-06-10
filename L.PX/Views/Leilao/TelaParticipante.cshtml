@@ -1,22 +1,21 @@
 ﻿@model L.PX.Core.Lance
 @{
-    ViewBag.Title = "TelaParticipante";
+    ViewBag.Title = "Efetuar lance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 @{ var lances = ViewBag.Lances; }
-@foreach (L.PX.Core.LanceProcessado lance in lances)
-{
-    @lance.ToString();
-    <br />
-}
+
+
+
 @using (Html.BeginForm())
 {
-    
-    <h3>
-        Participante</h3>
+
+    <h1>
+        Participante</h1>
     <fieldset>
-        <legend>Seu lance:</legend>
+        <legend>Seu lance</legend>
         <div class="editor-label">
             @Html.Label("Incremento")
         </div>
@@ -33,4 +32,13 @@
    
     
     <input type="submit" value="OK" />
+    <fieldset>
+    <legend>Historico de lances</legend>
+    @foreach (L.PX.Core.LanceProcessado lance in lances)
+    {
+        @lance.ToString()
+        <br />  
+    }
+    </fieldset>
+
 }
