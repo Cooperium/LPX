@@ -70,21 +70,12 @@ namespace L.PX.Controllers
         //Get: TelaContratante/
         public ActionResult TelaContratante()
         {
-
             return View(leilao);
         }
 
         [HttpPost]
         public ActionResult TelaContratante(Lance lance)
         {
-            TryUpdateModel(lance);
-
-            var email = Membership.GetUser().Email;
-            var usuario = leilaoDB.Users.Single(u => u.Email == email); // <== gambiarra
-            lance.User = usuario;
-            var lanceProcessado = leilao.RecebeLance(lance);
-
-            ViewBag.Lances = leilao.ListaLancesDosUsuarios().Where(l => l.Lance.User == usuario);
             return View();
         }
 
