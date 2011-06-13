@@ -42,6 +42,28 @@ namespace L.PX.Controllers
             return View();
         }
 
+
+        //
+        // GET: /Gerenciar Leilao/
+
+        public ActionResult GerenciarLeilao()
+        {
+
+            var email = Membership.GetUser().Email;
+            var usuario = leilaoDB.Users.Single(u => u.Email == email);
+
+            var participante = leilao.FindParticipante(usuario);
+
+            if ((participante != null) && (participante.IsContratante == true))
+                return RedirectToAction("TelaGerenciador");
+            else
+                return RedirectToAction("TelaGerenciadorPart");
+
+            return View();
+
+        }
+
+
         //GET: TelaParticipante/
         public ActionResult TelaParticipante()
         {
@@ -59,7 +81,7 @@ namespace L.PX.Controllers
             TryUpdateModel(lance);
 
             var email = Membership.GetUser().Email;
-            var usuario = leilaoDB.Users.Single(u => u.Email == email); // <== gambiarra
+            var usuario = leilaoDB.Users.Single(u => u.Email == email);
             lance.User = usuario;
             var lanceProcessado = leilao.RecebeLance(lance);
 
@@ -67,19 +89,52 @@ namespace L.PX.Controllers
             return View();
         }
 
+
+
+
         //Get: TelaContratante/
         public ActionResult TelaContratante()
         {
-            ViewBag.Participantes = leilao.ListaParticipantes();
+            ViewBag.Participantes = leilaoDB.Participantes.Include("Usuario").Where(p => p.Leilao.Id == leilao.Id);
             return View(leilao);
         }
 
         [HttpPost]
         public ActionResult TelaContratante(Lance lance)
         {
-           // Membership.GetUser().IsOnline();
+            // Membership.GetUser().IsOnline();
             return View();
         }
+
+
+        //Get: TelaGerenciador/
+        public ActionResult TelaGerenciador()
+        {
+
+          //  Leilao leilao = new Leilao();
+           // leilao
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult TelaGerenciador(Lance lance)
+        {
+            return View();
+        }
+
+
+        //Get: TelaGerenciadorPart/
+        public ActionResult TelaGerenciadorPart()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult TelaGerenciadorPart(Lance lance)
+        {
+            return View();
+        }
+
 
     }
 }

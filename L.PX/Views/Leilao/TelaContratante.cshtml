@@ -28,7 +28,7 @@
     @foreach (var item in Model.ListaLancesDosUsuarios())
     {
         <table>
-            <tr>@item.Valor.ToString() - @item.Lance.User.Email.ToString();</tr>
+            <tr>@item.Valor.ToString() - @item.Lance.User.NomeCompleto.ToString();</tr>
         </table>
     }
 </fieldset>

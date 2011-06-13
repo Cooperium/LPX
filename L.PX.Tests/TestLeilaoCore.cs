@@ -31,9 +31,5 @@ namespace L.PX.Tests
             Assert.IsTrue(leilao.FindParticipante(user1).IsContratante  == true);
 
         }
-
-     
-
-        
     }
 }
