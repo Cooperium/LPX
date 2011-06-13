@@ -1,12 +1,14 @@
-﻿@if(Request.IsAuthenticated) {
+﻿@if (Request.IsAuthenticated)
+{
     <ul id="navlist">
-     <li>@Html.ActionLink("Log Off", "LogOff", "Account")
-     </li> 
-     </ul>
-}
-else {
-    <ul id="navlist">
-    <li>@Html.ActionLink("Entrar", "Entrar", "Account") </li>
+        <li>@Html.ActionLink("Log Off", "LogOff", "Account")
+            <li>@Html.ActionLink("Trocar Senha", "ChangePassword", "Account")</li>
+        </li>
     </ul>
 }
-
+else
+{
+    <ul id="navlist">
+        <li>@Html.ActionLink("Entrar", "Entrar", "Account") </li>
+    </ul>
+}

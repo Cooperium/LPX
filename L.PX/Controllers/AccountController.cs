@@ -8,6 +8,7 @@ using System.Web.Security;
 using L.PX.Models;
 using L.PX.Core.Data;
 using L.PX.Core;
+using System.Net.Mail;
 
 namespace L.PX.Controllers
 {
@@ -66,7 +67,7 @@ namespace L.PX.Controllers
         //
         // GET: /Account/Register
 
-        public ActionResult Registrar()
+        public ActionResult Registre()
         {
             return View();
         }
@@ -75,7 +76,7 @@ namespace L.PX.Controllers
         // POST: /Account/Register
 
         [HttpPost]
-        public ActionResult Registrar(RegisterModel model)
+        public ActionResult Registre(RegisterModel model)
         {
             if (ModelState.IsValid)
             {
@@ -158,6 +159,25 @@ namespace L.PX.Controllers
             return View();
         }
 
+        public ActionResult SendEmail()
+        {
+            return View();
+        }
+
+        public ActionResult SendEmail(SendEmailModel model)
+        {
+            MailMessage theMailMessage = new MailMessage("cooperium@lpx.com",model.Email);
+            theMailMessage.Body = "Sua senha é:";
+            theMailMessage.Attachments.Add(new Attachment("pathToEmailAttachment"));
+            theMailMessage.Subject = "Subject here";
+            SmtpClient theClient = new SmtpClient("IP.Address.Of.Smtp");
+            theClient.UseDefaultCredentials = false;
+            System.Net.NetworkCredential theCredential = new System.Net.NetworkCredential("user@name.com", "password");
+            theClient.Credentials = theCredential;
+            theClient.Send(theMailMessage);
+            
+            return View(model);
+        }
         #region Status Codes
         private static string ErrorCodeToString(MembershipCreateStatus createStatus)
         {
