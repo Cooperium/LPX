@@ -111,28 +111,34 @@ namespace L.PX.Controllers
         public ActionResult TelaGerenciador()
         {
 
-          //  Leilao leilao = new Leilao();
-           // leilao
             return View();
+
         }
 
         [HttpPost]
-        public ActionResult TelaGerenciador(Lance lance)
+        public ActionResult TelaGerenciador(Leilao leilao)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                leilaoDB.Leiloes.Add(leilao);
+                leilaoDB.SaveChanges();
+                return RedirectToAction("TelaGerenciador");
+            }
+            return View(leilao);
         }
-
 
         //Get: TelaGerenciadorPart/
         public ActionResult TelaGerenciadorPart()
         {
-            return View();
+            ViewBag.Participantes = leilaoDB.Participantes.Include("Usuario").Where(p => p.Leilao.Id == leilao.Id);
+            return View(leilao);
         }
 
         [HttpPost]
-        public ActionResult TelaGerenciadorPart(Lance lance)
+        public ActionResult TelaGerenciadorPart(Leilao leilao)
         {
-            return View();
+            return RedirectToAction("TelaParticipante");
+            return View(leilao);
         }
 
 

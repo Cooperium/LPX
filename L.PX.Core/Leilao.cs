@@ -9,6 +9,7 @@ namespace L.PX.Core
     public class Leilao
     {
         [Key]
+        [Display(AutoGenerateField = false)]
         public Int32 Id { get; set; }
         private decimal valorInicial = 0;
         public virtual List<Participante> Participantes { get; set; }
