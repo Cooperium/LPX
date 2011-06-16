@@ -25,13 +25,12 @@ namespace L.PX.Models
             Membership.CreateUser("carlitos@cooperium.com", "123456", "carlitos@cooperium.com");
             Membership.CreateUser("cristianoaffa@cooperium.com", "123456", "cristianoaffa@cooperium.com");
 
-
             var users = new List<User>
             {
                 new User {Email = "cooperium@cooperium.com", NomeCompleto = "Cooperium",  Empresa = "Cemig", Telefone = "34223242"},
                 new User {Email = "matheus@cooperium.com", NomeCompleto = "Matheus",  Empresa = "Legal", Telefone = "34252626"},
                 new User {Email = "carlitos@cooperium.com", NomeCompleto = "Carlitos",  Empresa = "Legal", Telefone = "34252626"},
-                new User {Email = "cristianoaffa@cooperium.com",NomeCompleto = "Cristiano", Empresa = "Eletropaulo", Telefone = "59874565"}
+                new User {Email = "helena@cooperium.com", NomeCompleto = "Helena",  Empresa = "Legal", Telefone = "34252626"},
 
             };
 

@@ -74,4 +74,16 @@ namespace L.PX.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
+
+    public class SendEmailModel
+    {
+        [Required]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+        
+        [Display(Name = "Mandar email")]
+        public bool RememberMe { get; set; }
+
+    }
+
 }

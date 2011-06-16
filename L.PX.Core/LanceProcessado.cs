@@ -17,10 +17,10 @@ namespace L.PX.Core
 
         public override string ToString()
         {
-            return string.Format("Usuario: {0}, Status:{1}, Valor{2}, Timestamp{3}", Lance.User.NomeCompleto, Status.ToString(), Valor.ToString("C2"), Timestamp.ToString());
+            return string.Format("{0}       Status: {1}     Valor: {2}      Data: {3}", Lance.User.NomeCompleto, Status.ToString(), Valor.ToString("C2"), Timestamp.ToString());
         }
     }
-
+   
     public enum LanceStatus
     {
         Atendido,

@@ -12,8 +12,7 @@ namespace L.PX.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "L.PX " + User.Identity.Name;
-
+            ViewBag.Message = User.Identity.Name; 
             var dao = new LpxDao();
             var membershipUser = Membership.GetUser(User.Identity.Name);
             if (membershipUser != null)
