@@ -102,7 +102,10 @@ namespace L.PX.Controllers
         [HttpPost]
         public ActionResult TelaContratante(Lance lance)
         {
-            // Membership.GetUser().IsOnline();
+            if (Membership.GetUser(User.Identity.Name).IsOnline == true)
+                lance.User.Estado = "Online";
+            else
+                lance.User.Estado = "Offline";
             return View();
         }
 
@@ -140,6 +143,14 @@ namespace L.PX.Controllers
             return RedirectToAction("TelaParticipante");
             return View(leilao);
         }
+
+        //Get: TelaAddParticipante/
+        public ActionResult TelaAddParticipante()
+        {
+            ViewBag.Participantes = leilaoDB.Participantes.Include("Usuario").Where(p => p.Leilao.Id == leilao.Id);
+            return View(); 
+        }
+
 
 
     }

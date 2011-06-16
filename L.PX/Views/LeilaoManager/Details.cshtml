@@ -1,0 +1,30 @@
+﻿@model L.PX.Core.Leilao
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Leilao</legend>
+
+    <div class="display-label">ValorAtual</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ValorAtual)
+    </div>
+
+    <div class="display-label">NumeroDeLotes</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumeroDeLotes)
+    </div>
+
+    <div class="display-label">ValorInicial</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ValorInicial)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

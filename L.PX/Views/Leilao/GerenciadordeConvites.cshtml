@@ -1,0 +1,20 @@
+﻿@model L.PX.Core.Leilao
+
+@{
+    ViewBag.Title = "GerenciadordeConvites";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>
+    Novo Leilão</h2>
+<fieldset>
+    <legend>Leilao</legend>
+    <div class="display-label">
+        @Html.Label("Mensagem")  </div>
+    <div class="display-field">
+        @Html.TextArea("Mensagem")</div>
+    </fieldset>
+
+    
+<ul id="navlist">
+                <li><a href="@Url.Content("~/TelaAddParticipante/")">Adicionar Participante</a></li>
+             </ul>        

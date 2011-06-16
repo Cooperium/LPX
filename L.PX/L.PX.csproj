@@ -65,10 +65,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeilaoController.cs" />
+    <Compile Include="Controllers\LeilãoManagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\LeilaoModelContext.cs" />
     <Compile Include="Models\SampleData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -171,6 +173,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Leilao\TelaGerenciadorPart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Leilao\GerenciadordeConvites.cshtml" />
+    <Content Include="Views\Leilao\TelaAddParticipante.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\LeilaoManager\Create.cshtml" />
+    <Content Include="Views\LeilaoManager\Delete.cshtml" />
+    <Content Include="Views\LeilaoManager\Details.cshtml" />
+    <Content Include="Views\LeilaoManager\Edit.cshtml" />
+    <Content Include="Views\LeilaoManager\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
