@@ -19,12 +19,11 @@ namespace L.PX.Controllers
 
         public ViewResult Index()
         {
-            return View();
+            var leilao = db.Leilaos.Include(a => a.Participantes).Include(a => a.Id);  
+            return View(leilao.ToList());
         }
 
-        //
-        // GET: /LeilãoManager/Details/5
-
+        
 
         //
         // GET: /LeilãoManager/Create

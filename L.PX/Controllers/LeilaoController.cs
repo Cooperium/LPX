@@ -147,7 +147,7 @@ namespace L.PX.Controllers
         //Get: TelaAddParticipante/
         public ActionResult TelaAddParticipante()
         {
-            ViewBag.Participantes = leilaoDB.Participantes.Include("Usuario").Where(p => p.Leilao.Id == leilao.Id);
+            ViewBag.Participantes = new SelectList(leilaoDB.Participantes, "Participantes", "Email"); ;
             return View(); 
         }
 

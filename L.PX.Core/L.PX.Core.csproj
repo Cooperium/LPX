@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cronometro.cs" />
+    <Compile Include="Cronometro1.cs" />
     <Compile Include="Data\LpxDao.cs" />
+    <Compile Include="Form.cs" />
     <Compile Include="Lance.cs" />
     <Compile Include="LanceProcessado.cs" />
     <Compile Include="Leilao.cs" />

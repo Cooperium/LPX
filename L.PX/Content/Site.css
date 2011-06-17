@@ -7,9 +7,9 @@
 
 body
 {
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Cambira, sans-serif;
 	font-size: 14px;
-	background-color: #FBF9EF;
+	background-color: #2B0708;
 	padding: 0px 6%;
 }
 
@@ -22,7 +22,7 @@ body
 {
 	float: left;
 	width: 100%;
-	border-bottom: 1px dotted #5D5A53;
+	border-bottom: 1px dotted #183806;
 	margin-bottom: 10px;
 }
 
@@ -83,7 +83,7 @@ ul#album-list li a, ul#album-list li .button
 
 ul#album-list li a span
 {
-	color: #9b9993;
+	color: #829B66;
 	text-decoration: underline;
 }
 
@@ -94,7 +94,7 @@ ul#album-list li a span
 
 #update-message
 {
-	color: #F6855E;
+	color: #99F620;
 	font-weight: bold;
 }
 
@@ -105,7 +105,7 @@ ul#album-list li a span
 	padding: 5px;
 	margin-top: 10px; 
 	border: 1px;
-	background: #5e5b54;
+	background: #3B5E41;
 	color: #fff;
 	font-weight: bold;
 }
@@ -120,8 +120,8 @@ ul#album-list li a span
 	clear: both;
 	padding: 10px;
 	text-align: right;
-	border-top: 1px dotted #8A8575;
-	border-bottom: 1px dotted #8A8575;
+	border-top: 1px dotted #829B66;
+	border-bottom: 1px dotted #829B66;
 	font-family: Constantia, Georgia, serif;
 }
 
@@ -138,7 +138,7 @@ ul#navlist li
 
 ul#navlist li a
 {
-	border-left: 1px dotted #8A8575;
+	border-left: 1px dotted #829B66;
 	padding: 10px;
 	margin-top: 10px;
 	color: #8A8575;
@@ -153,7 +153,7 @@ ul#navlist li:first-child a
 
 ul#navlist li a:hover
 {
-	color: #F6855E;
+	color: #4AF678;
 }
 
 /********************* End top navigation ***************************/

@@ -81,8 +81,8 @@ namespace L.PX.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
         
-        [Display(Name = "Mandar email")]
-        public bool RememberMe { get; set; }
+        [Display(Name = "Enviar")]
+        public bool Enviar { get; set; }
 
     }
 
