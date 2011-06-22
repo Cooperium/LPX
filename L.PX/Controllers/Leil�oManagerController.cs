@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using L.PX.Core;
 using L.PX.Models;
+using L.PX.Core.Data;
 
 namespace L.PX.Controllers
 { 
@@ -31,6 +32,8 @@ namespace L.PX.Controllers
         public ActionResult Create()
         {
             ViewBag.Participantes = new SelectList(db.Participante,"Participantes","Email");
+            ViewBag.Contratante = new SelectList(db.Contratante, "Contratante", "Email");
+        
             
  
             return View();

@@ -10,5 +10,7 @@ namespace L.PX.Models
         public DbSet<Leilao> ValorInicial { get; set; }
         public DbSet<User> Empresa { get; set; }
         public DbSet<Leilao> Leilaos { get; set; }
+        public DbSet<Participante> Contratante { get; set; } 
+        
     }
 }

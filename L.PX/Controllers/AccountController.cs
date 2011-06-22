@@ -9,11 +9,17 @@ using L.PX.Models;
 using L.PX.Core.Data;
 using L.PX.Core;
 using System.Net.Mail;
+using System.Net;
 
 namespace L.PX.Controllers
 {
     public class AccountController : Controller
     {
+        public ActionResult Index()
+        {
+            SendEmail();
+            return RedirectToAction("Entrar");
+        }
 
         //
         // GET: /Account/LogOn
@@ -88,7 +94,7 @@ namespace L.PX.Controllers
                 {
                     using (var dao = new LpxDao())
                     {
-                        dao.Users.Add(new User() { Email = model.Email, Empresa =  model.Empresa, NomeCompleto= model.NomeCompleto, Telefone = model.Telefone  });
+                        dao.Users.Add(new User() { Email = model.Email, Empresa = model.Empresa, NomeCompleto = model.NomeCompleto, Telefone = model.Telefone });
                         dao.SaveChanges();
                     }
 
@@ -159,24 +165,25 @@ namespace L.PX.Controllers
             return View();
         }
 
-        public ActionResult SendEmail()
+        private void SendEmail()
         {
-            return View();
-        }
 
-        public ActionResult SendEmail(SendEmailModel model)
-        {
-            MailMessage theMailMessage = new MailMessage("cooperium@lpx.com",model.Email);
+            //MailMessage mail = new MailMessage("cooperium@gmail.com","matheusgalo01@gmail.com","test","test");
+            //SmtpClient server = new SmtpClient("smtp.gmail.com",465);
+            //server.UseDefaultCredentials = false;
+            //System.Net.NetworkCredential credential = new System.Net.NetworkCredential("cooperium@gmail.com","coop2011coop");
+            //server.Credentials = credential;
+            //server.Send(mail);
+
+            MailMessage theMailMessage = new MailMessage("matheusbizzoni@hotmail.com","matheusgalo01@gmail.com");
             theMailMessage.Body = "Sua senha é:";
-            theMailMessage.Attachments.Add(new Attachment("pathToEmailAttachment"));
             theMailMessage.Subject = "Subject here";
-            SmtpClient theClient = new SmtpClient("IP.Address.Of.Smtp");
-            theClient.UseDefaultCredentials = false;
-            System.Net.NetworkCredential theCredential = new System.Net.NetworkCredential("user@name.com", "password");
+            SmtpClient theClient = new SmtpClient("smtp.live.com",587);
+            System.Net.NetworkCredential theCredential = new System.Net.NetworkCredential("matheusbizzoni@hotmail.com", "mamao00");
             theClient.Credentials = theCredential;
             theClient.Send(theMailMessage);
-            
-            return View(model);
+
+          
         }
         #region Status Codes
         private static string ErrorCodeToString(MembershipCreateStatus createStatus)
